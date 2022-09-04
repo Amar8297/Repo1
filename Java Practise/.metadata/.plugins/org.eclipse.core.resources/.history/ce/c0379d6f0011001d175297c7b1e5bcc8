@@ -1,0 +1,8 @@
+package day20.collections;
+
+public class GC {
+	public static void main(String[] agrs) {
+		
+	}
+
+}

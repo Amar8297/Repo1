@@ -1,0 +1,36 @@
+package day10.explicitwait;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.github.dockerjava.api.model.Driver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class WebDriverWaitExample2 {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriverManager.chromedriver().setup();
+		
+		WebDriver driver=new ChromeDriver();
+		
+		driver.get("https://gmail.com");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		driver.findElement(By.id("identifierId")).sendKeys("amarshirsat90@gmail.com");
+		driver.findElement(By.xpath("//span[text()='Next']")).click();
+		
+		WebDriverWait wait=new WebDriverWait(driver,20);
+		
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("Passwd"))).sendKeys("Abc@123");;
+		
+		driver.findElement(By.xpath("//span[text()='Next']")).click();
+		Thread.sleep(1000);
+		driver.close();
+	}
+}

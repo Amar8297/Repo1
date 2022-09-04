@@ -1,0 +1,21 @@
+package Practise;
+abstract class MyClass
+{  
+//abstract method declaration  
+abstract void display();  
+}  
+public class MyClass extends MyClass  
+{  
+//method impelmentation  
+void display()  
+{  
+System.out.println("Abstract method?");  
+}  
+public static void main(String args[])  
+{  
+//creating object of abstract class  
+MyClass obj = new MyClass();  
+//invoking abstract method  
+obj.display();  
+}  
+}  
